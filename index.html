@@ -7,7 +7,7 @@
 <style>
 @font-face{font-family:'Archivo Narrow';font-weight:400 700;font-display:swap;src:url(brand/fonts/ArchivoNarrow[wght].ttf) format('truetype')}
 @font-face{font-family:'Source Sans 3';font-weight:200 900;font-display:swap;src:url(brand/fonts/SourceSans3[wght].ttf) format('truetype')}
-:root{--navy:#402978;--ink:#2A1B52;--muted:#676767;--faint:#8A8A8A;--bg:#FFFFFF;--surface:#FFFFFF;--surface-2:#F7F6FA;--line:#DCDEE0;--line-2:#A6AAA9;--blue:#653BB8;--sky:#946FDD;--sky-tint:#F2EEFB;--orange:#653BB8;--orange-d:#402978;--orange-tint:#F2EEFB;--orange-soft:#D9CCF5;--hilite:#E6DDFA;--on-orange:#FFFFFF;--font:'Source Sans 3', 'Trebuchet MS', 'Segoe UI', system-ui, Arial, sans-serif;--font-display:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif;--font-ar:'Noto Sans Arabic', 'Segoe UI', Tahoma, sans-serif;--red:#c4321a;--red-tint:#fdece8;--vest:#F2C200;--band-notes:#6A4BB0;--pad:16px}
+:root{--navy:#0C272D;--ink:#2A1B52;--muted:#676767;--faint:#8A8A8A;--bg:#FFFFFF;--surface:#FFFFFF;--surface-2:#F7F6FA;--line:#DCDEE0;--line-2:#A6AAA9;--blue:#653BB8;--sky:#736BED;--sky-tint:#F2EEFB;--orange:#26085C;--orange-d:#190553;--orange-tint:#F2EEFB;--orange-soft:#D9CCF5;--hilite:#E6DDFA;--on-orange:#FFFFFF;--font:'Source Sans 3', 'Trebuchet MS', 'Segoe UI', system-ui, Arial, sans-serif;--font-display:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif;--font-ar:'Noto Sans Arabic', 'Segoe UI', Tahoma, sans-serif;--bar-bg:#F1EAD8;--bar-fg:#0C272D;--bar-rule:1.6mm solid #74FA93;--lang-on-bg:#0C272D;--lang-on-fg:#F1EAD8;--logo-h:44px;--red:#c4321a;--red-tint:#fdece8;--vest:#F2C200;--band-notes:#6A4BB0;--pad:16px}
 *{box-sizing:border-box}
 html,body{margin:0}
 body{background:#E9E6F1;color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.45}
@@ -15,12 +15,12 @@ body{background:#E9E6F1;color:var(--ink);font-family:var(--font);font-size:16px;
 .app{max-width:760px;margin:0 auto;background:var(--surface-2);min-height:100vh;padding-bottom:28px}
 button{font:inherit;color:inherit}
 :focus-visible{outline:3px solid var(--sky);outline-offset:2px}
-.bar{position:sticky;top:0;z-index:30;background:var(--navy);padding:10px var(--pad)}
+.bar{position:sticky;top:0;z-index:30;background:var(--bar-bg,var(--navy));border-bottom:var(--bar-rule,0);padding:10px var(--pad)}
 .barrow{display:flex;align-items:center;justify-content:space-between;gap:10px;direction:ltr}
-.logo{height:30px;width:auto;display:block}
-.lang{display:inline-flex;border:2px solid #fff;border-radius:4px;overflow:hidden}
-.lang button{font-weight:700;font-size:13px;min-width:44px;min-height:34px;padding:0 8px;border:0;background:transparent;color:#fff;cursor:pointer}
-.lang button.on{background:#fff;color:var(--navy)}
+.logo{height:var(--logo-h,30px);width:auto;display:block}
+.lang{display:inline-flex;border:2px solid var(--bar-fg,#fff);border-radius:4px;overflow:hidden}
+.lang button{font-weight:700;font-size:13px;min-width:44px;min-height:34px;padding:0 8px;border:0;background:transparent;color:var(--bar-fg,#fff);cursor:pointer}
+.lang button.on{background:var(--lang-on-bg,#fff);color:var(--lang-on-fg,var(--navy))}
 .wrap{padding:0 12px}
 h1,h2,h3,.ctitle{font-family:var(--font-display);color:var(--navy);margin:0}
 /* ---- head + how to use ---- */
@@ -219,7 +219,7 @@ textarea.rv-in{resize:vertical;min-height:84px}
 <div class="app">
   <header class="bar"><div class="barrow">
     <div class="lang" role="group" aria-label="Language"><button id="b-en" class="on" lang="en">EN</button><button id="b-ar" lang="ar">عربي</button></div>
-    <img class="logo" src="brand/jam-training-white.png" alt="JAM Training">
+    <img class="logo" src="brand/afc-logo-dark-green-800.png" alt="AFC Asian Cup Saudi Arabia 2027">
   </div></header>
   <main class="wrap" id="main"></main>
 </div>
