@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Field notes and resources</title>
+<style>
+@font-face{font-family:'Archivo Narrow';font-weight:400 700;font-display:swap;src:url(brand/fonts/ArchivoNarrow[wght].ttf) format('truetype')}
+@font-face{font-family:'Source Sans 3';font-weight:200 900;font-display:swap;src:url(brand/fonts/SourceSans3[wght].ttf) format('truetype')}
+:root{--navy:#402978;--ink:#2A1B52;--muted:#676767;--faint:#8A8A8A;--bg:#FFFFFF;--surface:#FFFFFF;--surface-2:#F7F6FA;--line:#DCDEE0;--line-2:#A6AAA9;--blue:#653BB8;--sky:#946FDD;--sky-tint:#F2EEFB;--orange:#653BB8;--orange-d:#402978;--orange-tint:#F2EEFB;--orange-soft:#D9CCF5;--hilite:#E6DDFA;--on-orange:#FFFFFF;--font:'Source Sans 3', 'Trebuchet MS', 'Segoe UI', system-ui, Arial, sans-serif;--font-display:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif;--font-ar:'Noto Sans Arabic', 'Segoe UI', Tahoma, sans-serif;--red:#c4321a;--red-tint:#fdece8;--vest:#F2C200;--band-notes:#6A4BB0;--pad:16px}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:#E9E6F1;color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.45}
+[lang=ar] body,[lang=ar] input{font-family:var(--font-ar),var(--font)}
+.app{max-width:760px;margin:0 auto;background:var(--surface-2);min-height:100vh;padding-bottom:28px}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--sky);outline-offset:2px}
+.bar{position:sticky;top:0;z-index:30;background:var(--navy);padding:10px var(--pad)}
+.barrow{display:flex;align-items:center;justify-content:space-between;gap:10px;direction:ltr}
+.logo{height:30px;width:auto;display:block}
+.lang{display:inline-flex;border:2px solid #fff;border-radius:4px;overflow:hidden}
+.lang button{font-weight:700;font-size:13px;min-width:44px;min-height:34px;padding:0 8px;border:0;background:transparent;color:#fff;cursor:pointer}
+.lang button.on{background:#fff;color:var(--navy)}
+.wrap{padding:0 12px}
+h1,h2,h3,.ctitle{font-family:var(--font-display);color:var(--navy);margin:0}
+/* ---- head + how to use ---- */
+.head{padding:18px 4px 10px}
+.kicker{font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--orange);margin:0 0 2px}
+h1{font-size:30px;line-height:1.1}
+.why{margin:6px 0 0;font-size:16px;color:var(--ink)}
+.howto{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+@media(max-width:600px){.howto{grid-template-columns:1fr}}
+.howto li{display:grid;grid-template-columns:40px 1fr;gap:10px;align-items:start;background:var(--surface);border-radius:4px;padding:8px 10px;font-size:15.5px;line-height:1.3}
+.howto .ic{width:40px;height:40px;border-radius:50%;display:grid;place-items:center}
+.howto .ic svg{width:22px;height:22px;stroke:#fff}
+.howto b{color:var(--navy)}
+/* ---- panels: each section its own card with a coloured band ---- */
+.panel{background:var(--surface);border-radius:6px;margin:16px 0 0;overflow:hidden;border:1px solid var(--line)}
+.band{display:flex;align-items:center;gap:10px;padding:10px 14px;color:#fff;font-family:var(--font-display);font-size:20px;font-weight:700;line-height:1.1;margin:0}
+.band svg{width:24px;height:24px;stroke:#fff;flex:none}
+.band small{display:block;font-family:var(--font);font-size:13px;font-weight:400;opacity:.92}
+.pbody{padding:12px 14px 14px}
+.b-report{background:var(--navy)}.c-report{background:var(--navy)}
+.b-find{background:var(--orange)}.c-find{background:var(--orange)}
+.b-em{background:var(--red)}.c-em{background:var(--red)}
+.b-notes{background:var(--band-notes)}
+.b-all{background:var(--ink)}.c-all{background:var(--ink)}
+/* ---- 911 ---- */
+.sos{margin:6px 0 0;border:4px solid var(--red);border-radius:6px;padding:14px 16px 12px;background:var(--surface)}
+.sos-k,.sos-n{text-align:center}
+.sos-k{margin:0;font-family:var(--font-display);font-weight:700;font-size:22px;letter-spacing:.08em;color:var(--red);line-height:1}
+.sos-n{display:block;font-family:var(--font-display);font-weight:700;font-size:88px;line-height:.95;color:var(--red);text-decoration:none;margin:2px 0 6px}
+.sos-lead{margin:0 0 6px;font-size:19px;font-weight:800;color:var(--red);line-height:1.25}
+.sos-when{margin:0 0 8px;padding-inline-start:20px;font-size:16px;line-height:1.4;color:var(--ink)}
+.sos-when li{margin:3px 0}
+.sos-when li::marker{color:var(--red)}
+.sos-then{margin:0 0 10px;font-weight:700;color:var(--navy)}
+.sos-call{display:flex;align-items:center;justify-content:center;gap:10px;min-height:52px;background:var(--red);color:#fff;font-weight:800;font-size:19px;text-decoration:none;border-radius:4px}
+.sos-call svg{width:22px;height:22px;stroke:#fff}
+.sos-other{margin:8px 0 0;font-size:13.5px;color:var(--muted)}
+/* ---- how to report: pictures first ---- */
+.who{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 10px}
+.who b{font-family:var(--font-display);font-size:21px;color:var(--navy)}
+.kit{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--navy);background:var(--sky-tint);padding:3px 9px 3px 5px;border-radius:14px}
+.kit svg{width:22px;height:22px}
+.step{display:grid;grid-template-columns:40px 1fr;gap:10px;align-items:start;padding:10px 0;border-top:1px solid var(--line)}
+.num{width:40px;height:40px;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center;font-family:var(--font-display);font-size:24px;font-weight:700}
+.pics{display:flex;align-items:flex-end;gap:2px;flex-wrap:nowrap;margin:0 0 6px;direction:ltr}
+[dir=rtl] .pics{flex-direction:row-reverse;justify-content:flex-end}
+.fig{display:flex;flex-direction:column;align-items:center;gap:2px;width:58px}
+.fig svg{width:40px;height:44px}
+.fig span{font-size:11.5px;font-weight:700;color:var(--navy);line-height:1.1;text-align:center}
+.fig.you span{background:var(--orange);color:#fff;border-radius:3px;padding:0 5px}
+.arr{width:18px;height:44px;flex:none}
+[dir=rtl] .arr{transform:scaleX(-1)}
+.say{margin:0;font-size:18px;font-weight:700;line-height:1.3;color:var(--ink)}
+.keep{display:grid;grid-template-columns:40px 1fr;gap:10px;align-items:center;padding:10px 0 0;border-top:1px solid var(--line)}
+.keep .eye{width:40px;height:40px;border-radius:50%;background:var(--sky-tint);display:grid;place-items:center}
+.keep .eye svg{width:24px;height:24px;stroke:var(--navy)}
+.lane2{margin-top:14px;border-top:3px solid var(--line);padding-top:12px}
+.lane2 ul{margin:0;padding-inline-start:20px;font-size:15px;line-height:1.4}
+.tbd{margin:6px 0 0;font-size:13px;color:var(--amber,#b9770a);font-weight:700}
+.codes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:12px}
+.code{display:flex;flex-direction:column;align-items:center;gap:2px;border:1.5px dashed var(--line-2,#A6AAA9);border-radius:4px;padding:8px 4px;text-align:center}
+.code b{font-size:14px;color:var(--navy)}
+.code small{font-size:12px;color:var(--muted)}
+.cshape{width:22px;height:22px}
+/* ---- find ---- */
+.help{margin:0 0 10px;font-size:15.5px;line-height:1.35}
+.search{position:relative}
+.search input{width:100%;font:inherit;font-size:17px;min-height:52px;padding:0 14px 0 44px;border:2px solid var(--orange);border-radius:4px;background:var(--surface);color:var(--ink)}
+[dir=rtl] .search input{padding:0 44px 0 14px}
+.search svg{position:absolute;inset-inline-start:13px;top:16px;width:20px;height:20px;stroke:var(--navy)}
+#res{margin-top:12px}
+.tryl{margin:10px 0 6px;font-size:14px;font-weight:700;color:var(--navy)}
+.tries{display:flex;flex-wrap:wrap;gap:6px}
+.try{display:inline-flex;align-items:center;gap:5px;min-height:38px;padding:0 12px;border:2px solid var(--orange-soft);border-radius:19px;background:var(--orange-tint);color:var(--navy);font-weight:700;font-size:14.5px;cursor:pointer}
+.try svg{width:14px;height:14px;stroke:var(--navy)}
+.try:hover{border-color:var(--orange)}
+.rh{font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--muted);margin:0 0 8px}
+/* ---- emergency tiles ---- */
+.emgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.em{display:flex;flex-direction:column;align-items:flex-start;gap:8px;text-align:start;background:var(--red-tint);border:2px solid #f3c3b8;border-radius:4px;padding:12px;min-height:104px;cursor:pointer}
+.em svg{width:30px;height:30px;stroke:var(--red)}
+.em b{font-family:var(--font-display);font-size:18px;line-height:1.1;color:var(--navy)}
+.em span{font-size:12.5px;color:var(--muted);line-height:1.3}
+.em:hover{border-color:var(--red)}
+/* ---- notes ---- */
+.notesbtn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;background:none;border:0;padding:0;cursor:pointer;text-align:start;font-weight:700;color:var(--navy);min-height:44px}
+.notes{display:none;padding:4px 0 0}
+.notesbtn.open+.notes{display:block}
+.notes label{display:block;font-size:13px;font-weight:700;color:var(--muted);margin:8px 0 3px}
+.notes input{width:100%;font:inherit;min-height:44px;padding:0 12px;border:2px solid var(--line);border-radius:4px;color:var(--ink)}
+.notes input:focus{border-color:var(--sky);outline:0}
+.notes p{font-size:13px;color:var(--muted);margin:10px 0 0}
+/* ---- all job aids: one uniform row per lesson ---- */
+.lrow{width:100%;display:grid;grid-template-columns:44px minmax(0,1fr) auto 12px;gap:12px;align-items:center;background:none;border:0;border-top:1px solid var(--line);padding:10px 0;min-height:64px;cursor:pointer;text-align:start;color:var(--ink)}
+.pbody>.lrow:first-child{border-top:0}
+.lic{width:44px;height:44px;border-radius:6px;background:var(--sky-tint);display:grid;place-items:center}
+.lic svg{width:24px;height:24px;stroke:var(--navy)}
+.lt{display:flex;flex-direction:column;gap:1px;min-width:0}
+.lt small{font-size:12.5px;font-weight:700;letter-spacing:.04em;color:var(--orange)}
+.lt b{font-size:16.5px;line-height:1.2;color:var(--navy)}
+.lt em{font-style:normal;font-size:12px;font-weight:700;color:var(--amber,#b9770a)}
+.cnt{font-size:12.5px;font-weight:700;color:var(--navy);background:var(--sky-tint);border-radius:12px;padding:3px 9px;white-space:nowrap}
+.chev{width:10px;height:10px;border-inline-end:3px solid var(--navy);border-bottom:3px solid var(--navy);transform:rotate(-45deg);flex:none}
+[dir=rtl] .chev{transform:rotate(45deg)}
+.open>.chev{transform:rotate(45deg)}
+[dir=rtl] .open>.chev{transform:rotate(45deg)}
+.drawer{display:none;padding:0 0 12px 56px}
+[dir=rtl] .drawer{padding:0 56px 12px 0}
+.lrow.open+.drawer{display:block}
+.item{width:100%;display:grid;grid-template-columns:minmax(0,1fr) auto 12px;gap:10px;align-items:center;text-align:start;background:var(--surface);border:2px solid var(--line);border-radius:4px;padding:10px 12px;margin:0 0 6px;min-height:52px;cursor:pointer;color:var(--ink)}
+.item:hover{border-color:var(--sky)}
+.item b{font-size:15px;line-height:1.25}
+.item .tag{font-size:12px;color:var(--muted);white-space:nowrap}
+.pdf{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px;color:var(--navy);background:var(--surface);border:2px solid var(--orange);border-radius:4px;padding:8px 12px;min-height:44px;text-decoration:none;margin-top:4px}
+.pdf svg{width:18px;height:18px;stroke:var(--navy)}
+/* ---- one card ---- */
+.cardwrap{background:var(--surface);border-radius:6px;margin-top:6px;padding:4px 14px 14px;border:1px solid var(--line)}
+.crumb{font-weight:700;color:var(--orange);background:none;border:0;padding:14px 0 6px;min-height:44px;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-size:15px}
+.crumb::before{content:"\2039";font-size:22px;line-height:1}
+[dir=rtl] .crumb::before{content:"\203A"}
+.cmeta{color:var(--muted);font-size:14px;margin:8px 0 4px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.draft{font-size:12px;font-weight:700;color:var(--amber,#b9770a);border:1.5px solid currentColor;border-radius:3px;padding:0 6px}
+.ctitle{font-size:28px;line-height:1.1;margin:0 0 12px}
+.card.emc .ctitle{color:var(--red)}
+.steps{list-style:none;margin:0;padding:0}
+.steps li{display:flex;gap:12px;align-items:flex-start;border-top:1px solid var(--line);padding:12px 2px;font-size:17px;line-height:1.4}
+.steps li:last-child{border-bottom:1px solid var(--line)}
+.badge{flex:none;min-width:30px;height:30px;padding:0 6px;border-radius:4px;background:var(--navy);color:#fff;display:grid;place-items:center;font-family:var(--font-display);font-size:18px;font-weight:700;margin-top:-2px}
+.badge.x{background:var(--red)}
+.badge.dot{min-width:10px;width:10px;height:10px;padding:0;border-radius:50%;background:var(--sky);margin:9px 10px 0}
+.badge.go{background:var(--orange-soft);color:var(--navy)}
+.fill{color:var(--orange);font-weight:700}
+.fill.empty{color:var(--muted);font-weight:400;border-bottom:1.5px dashed var(--muted)}
+.more{margin-top:16px}
+.foot{font-size:11.5px;color:var(--muted);border-top:1px solid var(--line);margin-top:22px;padding:10px 4px 0}
+.foot p{margin:0 0 6px}
+.pending{font-size:13px;color:var(--muted);background:var(--sky-tint);padding:8px 10px;border-radius:4px;margin:0 0 10px}
+.none{color:var(--muted);font-size:15px;padding:8px 2px}
+.hidden{display:none!important}
+@media (min-width:600px){.emgrid{grid-template-columns:repeat(3,minmax(0,1fr))}.sos-n{font-size:110px}}
+@media print{.bar,.search,.crumb,.pdf{display:none!important}.app{max-width:none}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="bar"><div class="barrow">
+    <div class="lang" role="group" aria-label="Language"><button id="b-en" class="on" lang="en">EN</button><button id="b-ar" lang="ar">عربي</button></div>
+    <img class="logo" src="brand/jam-training-white.png" alt="JAM Training">
+  </div></header>
+  <main class="wrap" id="main"></main>
+</div>
+<script>
+const D={"drawers": [{"id": "course", "code": "SMP 1.1", "label": "Your course and practical day", "icon": "book", "cards": ["course-1", "course-2", "course-3", "course-4"], "pdf": "aids/smp11-welcome-baseline-job-aids.pdf", "released": true, "audience": "smp"}, {"id": "tour", "code": "SMP 1.2", "label": "The tournament and venues", "icon": "trophy", "cards": ["tour-1", "tour-2", "tour-3", "tour-4"], "pdf": "aids/smp12-tournament-event-types-job-aids.pdf", "released": true, "audience": "smp"}, {"id": "role", "code": "SMP 2.1", "label": "My role and who leads", "icon": "badge", "cards": ["role-1", "role-2", "role-3", "role-4", "role-5"], "pdf": "aids/smp21-role-authority-job-aids.pdf", "released": true, "audience": "smp"}, {"id": "fire", "code": "SMP 5.2", "label": "Fire safety", "icon": "flame", "cards": ["fire-1", "fire-2", "fire-3"], "pdf": "aids/smp52-fire-safety-job-aids.pdf", "released": true, "audience": "smp"}, {"id": "crowd", "code": "SMP 6.1", "label": "Crowd safety", "icon": "crowd", "cards": ["crowd-1", "crowd-2", "crowd-3", "crowd-4"], "pdf": "aids/smp61-crowd-safety-matters-job-aids.pdf", "released": true, "audience": "smp"}, {"id": "conflict", "code": "SMP 9.2", "label": "Conflict and calming things down", "icon": "talk", "cards": ["conflict-1", "conflict-2", "conflict-3", "conflict-4", "conflict-5", "conflict-6"], "pdf": "aids/smp92-conflict-deescalation-job-aids.pdf", "released": false, "audience": "smp"}, {"id": "lost", "code": "SMP 9.3", "label": "Safeguarding and lost persons", "icon": "child", "cards": ["lost-1", "lost-2", "lost-3", "lost-4"], "pdf": "aids/smp93-safeguarding-lost-persons-job-aids.pdf", "released": true, "audience": "smp"}, {"id": "shelter", "code": "SMP 10.3", "label": "Missile alert and shelter", "icon": "shield", "cards": ["shelter-1", "shelter-2", "shelter-3", "shelter-4", "shelter-5"], "pdf": "aids/smp103-missile-threat-emergency-response-job-aids.pdf", "released": false, "audience": "smp"}, {"id": "info", "code": "SMP 15.2", "label": "Info Point and lost property", "icon": "info", "cards": ["info-1", "info-2", "info-3"], "pdf": "aids/smp152-info-point-lost-found-job-aids.pdf", "released": false, "audience": "smp"}], "cards": {"course-1": {"drawer": "course", "code": "SMP 1.1", "released": true, "source": "smp11-welcome-baseline/release/v3", "title": {"en": "YOUR ROUTE TO MATCH DAY", "ar": "طريقك إلى يوم المباراة"}, "steps": [{"en": "1 E-learning - 16 topics, about 16 hours, on your phone (2-4 hours a day)", "ar": "1 التعلم الإلكتروني - 16 موضوعًا، نحو 16 ساعة، على هاتفك (2-4 ساعات يوميًا)"}, {"en": "2 Lesson checks after every lesson", "ar": "2 اختبارات الدروس بعد كل درس"}, {"en": "3 Final online check", "ar": "3 الاختبار الإلكتروني النهائي"}, {"en": "4 Practical day - 6 hours, hands-on (Stations P0-P5)", "ar": "4 يوم تطبيقي - 6 ساعات، تطبيق عملي (المحطات P0-P5)"}, {"en": "5 Certificate - then match day", "ar": "5 الشهادة - ثم يوم المباراة"}]}, "course-2": {"drawer": "course", "code": "SMP 1.1", "released": true, "source": "smp11-welcome-baseline/release/v3", "title": {"en": "HOW YOU PASS", "ar": "كيف تنجح"}, "steps": [{"en": "Lesson checks: 70 percent; safety-critical questions must be right", "ar": "اختبارات الدروس: 70 بالمئة؛ الأسئلة الحاسمة للسلامة يجب أن تكون صحيحة"}, {"en": "Final online check: 70 percent; up to 2 more attempts", "ar": "الاختبار الإلكتروني النهائي: 70 بالمئة؛ محاولتان إضافيتان كحد أقصى"}, {"en": "Practical day: 70 percent overall AND every safety-critical skill; up to 2 re-assessments with extra coaching", "ar": "اليوم التطبيقي: 70 بالمئة إجمالًا وكل مهارة حاسمة للسلامة؛ إعادة تقييم مرتين كحد أقصى مع تدريب إضافي"}, {"en": "Points are for accuracy, never speed", "ar": "النقاط للدقة، لا للسرعة أبدًا"}]}, "course-3": {"drawer": "course", "code": "SMP 1.1", "released": true, "source": "smp11-welcome-baseline/release/v3", "title": {"en": "NEED HELP?", "ar": "هل تحتاج إلى مساعدة؟"}, "steps": [{"en": "Use the Help button at the top of any screen.", "ar": "استخدم زر المساعدة أعلى أي شاشة."}, {"en": "LMS help channel, phone or WhatsApp: to be confirmed.", "ar": "قناة مساعدة نظام إدارة التعلّم، أو الهاتف، أو واتساب: قيد التأكيد."}]}, "course-4": {"drawer": "course", "code": "SMP 1.1", "released": true, "source": "smp11-welcome-baseline/release/v3", "title": {"en": "PRACTICAL DAY", "ar": "اليوم التطبيقي"}, "steps": [{"en": "Read your joining instructions - plan your journey - bring ID, water, comfortable shoes", "ar": "اقرأ تعليمات الحضور - خطط لرحلتك - أحضر الهوية والماء وحذاءً مريحًا"}, {"en": "Emergency numbers (only if you cannot reach your supervisor/VOC): 911 unified emergency number | 998 Civil Defence | 997 Red Crescent ambulance.", "ar": "أرقام الطوارئ (فقط إذا تعذر الوصول إلى المشرف أو مركز العمليات في الملعب): 911 الرقم الموحد للطوارئ | 998 الدفاع المدني | 997 إسعاف الهلال الأحمر."}]}, "tour-1": {"drawer": "tour", "code": "SMP 1.2", "released": true, "source": "smp12-tournament-event-types/release/v1", "title": {"en": "THE TOURNAMENT", "ar": "البطولة"}, "steps": [{"en": "AFC Asian Cup Saudi Arabia 2027", "ar": "كأس آسيا السعودية 2027™"}, {"en": "7 January - 5 February 2027 | 24 nations", "ar": "7 يناير - 5 فبراير 2027 | 24 منتخبًا"}, {"en": "Riyadh: King Fahd Sports City (main), King Saud Univ., Kingdom Arena, Imam Mohammed bin Saud Islamic Univ., Al Shabab", "ar": "الرياض: مدينة الملك فهد الرياضية (الرئيسي)، جامعة الملك سعود، المملكة أرينا، جامعة الإمام محمد بن سعود الإسلامية، نادي الشباب"}, {"en": "Jeddah: King Abdullah Sports City (main), Prince Abdullah Al Faisal", "ar": "جدة: مدينة الملك عبدالله الرياضية (الرئيسي)، الأمير عبدالله الفيصل"}, {"en": "Al Khobar: Aramco Stadium", "ar": "الخبر: ملعب أرامكو"}]}, "tour-2": {"drawer": "tour", "code": "SMP 1.2", "released": true, "source": "smp12-tournament-event-types/release/v1", "title": {"en": "FOOTBALL CROWDS - WHAT TO EXPECT", "ar": "جماهير كرة القدم - ماذا تتوقعون"}, "steps": [{"en": "Arrive late - biggest rush in the last 30 minutes", "ar": "تصل متأخرة - ذروة التدفق في آخر 30 دقيقة"}, {"en": "Feel the match - watch the mood after goals and red cards", "ar": "تعيش المباراة - راقبوا المزاج بعد الأهداف والبطاقات الحمراء"}, {"en": "Move together - half-time concourses; exits at the final whistle", "ar": "تتحرك معًا - الممرات في استراحة ما بين الشوطين، والمخارج عند صافرة النهاية"}, {"en": "Loud and loyal - two teams, neutrals, families: treat everyone the same", "ar": "حماسية ووفية - فريقان ومحايدون وعائلات: عاملوا الجميع بالطريقة نفسها"}]}, "tour-3": {"drawer": "tour", "code": "SMP 1.2", "released": true, "source": "smp12-tournament-event-types/release/v1", "title": {"en": "OUR MISSION", "ar": "مهمتنا"}, "steps": [{"en": "SAFETY FIRST - SERVICE ALWAYS", "ar": "السلامة أولًا - الخدمة دائمًا"}, {"en": "Host - Direct - Inform - Assist - Support", "ar": "استضافة - توجيه - إعلام - مساعدة - دعم"}]}, "tour-4": {"drawer": "tour", "code": "SMP 1.2", "released": true, "source": "smp12-tournament-event-types/release/v1", "title": {"en": "WARNING SIGNS COME FIRST", "ar": "المؤشرات التحذيرية تأتي أولًا"}, "steps": [{"en": "Spot it early - report it early.", "ar": "لاحظوا مبكرًا - أبلغوا مبكرًا."}, {"en": "Emergency numbers (only if you cannot reach your supervisor or the VOC - the Venue Operations Centre): 911 unified emergency number | 998 Civil Defence | 997 Red Crescent ambulance.", "ar": "أرقام الطوارئ (فقط إذا تعذّر الوصول إلى المشرف أو مركز العمليات في الملعب): 911 الرقم الموحد للطوارئ | 998 الدفاع المدني | 997 إسعاف الهلال الأحمر."}]}, "role-1": {"drawer": "role", "code": "SMP 2.1", "released": true, "source": "smp21-role-authority/release/v2", "title": {"en": "NOT MY ROLE - NEVER", "ar": "ليس من دوري - أبدًا"}, "steps": [{"en": "✖ Touch, push, pull, hold or restrain anyone", "ar": "✖ لمس أي شخص أو دفعه أو سحبه أو إمساكه أو تقييده"}, {"en": "✖ Search a person or a bag", "ar": "✖ تفتيش شخص أو حقيبة"}, {"en": "✖ Take (confiscate) property", "ar": "✖ أخذ (مصادرة) الممتلكات"}, {"en": "✖ Eject or remove anyone", "ar": "✖ إخراج أي شخص أو إبعاده"}, {"en": "✖ Hold anyone 'until the police come' or block a doorway", "ar": "✖ إمساك أي شخص 'حتى تأتي الشرطة' أو سدّ المدخل"}, {"en": "Aggressive person? Step back - keep your distance - report. Never get physical.", "ar": "شخص عدواني؟ تراجع - وحافظ على مسافتك - وأبلغ. ولا تتدخّل جسديًا أبدًا."}]}, "role-2": {"drawer": "role", "code": "SMP 2.1", "released": true, "source": "smp21-role-authority/release/v2", "title": {"en": "Who leads?", "ar": "من يتولى القيادة؟"}, "steps": [{"en": "Venue Security (SEC) - screening, access, refused entry", "ar": "أمن الملعب (SEC) - الفحص الأمني، والدخول، ومنع الدخول"}, {"en": "Police - violence, crime, suspicious items, removal", "ar": "الشرطة - العنف، والجرائم، والأغراض المشبوهة، والإخراج"}, {"en": "Saudi Civil Defence - fire and evacuation", "ar": "الدفاع المدني السعودي - الحرائق والإخلاء"}, {"en": "Saudi Red Crescent / medical - illness and injury", "ar": "الهلال الأحمر السعودي / الفرق الطبية - المرض والإصابات"}, {"en": "VOC - all agencies, big decisions", "ar": "مركز العمليات في الملعب - جميع الجهات، والقرارات الكبرى"}, {"en": "In an emergency: follow Civil Defence / Police / Security, then tell your supervisor", "ar": "في حالات الطوارئ: اتبع تعليمات الدفاع المدني / الشرطة / الأمن، ثم أخبر مشرفك"}, {"en": "Emergency numbers (only if you cannot reach your supervisor/VOC): 911 unified emergency number | 998 Civil Defence | 997 Red Crescent ambulance.", "ar": "أرقام الطوارئ (فقط إذا لم تتمكّن من الوصول إلى مشرفك/مركز العمليات في الملعب): 911 الرقم الموحّد للطوارئ | 998 الدفاع المدني | 997 إسعاف الهلال الأحمر."}]}, "role-3": {"drawer": "role", "code": "SMP 2.1", "released": true, "source": "smp21-role-authority/release/v2", "title": {"en": "My chain", "ar": "تسلسلي القيادي"}, "steps": [{"en": "Supervisor: {field:supervisor} - first call, every time", "ar": "المشرف: {field:supervisor} - أول من تتصل به، في كل مرة"}, {"en": "Area Leader: {field:areaLeader} - no answer or getting worse", "ar": "قائد المنطقة: {field:areaLeader} - إذا لم يكن هناك رد أو كان الوضع يزداد سوءًا"}, {"en": "Channel: {field:channel}", "ar": "القناة: {field:channel}"}, {"en": "FNP Venue Manager / Deputy → VOC", "ar": "مدير عمليات الجماهير في الملعب / نائبه ← مركز العمليات في الملعب"}, {"en": "Head of Marshals - attendance, food, water, uniform, equipment", "ar": "رئيس المنظمين - الحضور، والطعام، والماء، والزي، والمعدات"}]}, "role-4": {"drawer": "role", "code": "SMP 2.1", "released": true, "source": "smp21-role-authority/release/v2", "title": {"en": "Radio and team habits", "ar": "اللاسلكي وعادات الفريق"}, "steps": [{"en": "✖ Open emergency gates or start Stop & Hold unless instructed through your chain", "ar": "✖ فتح بوابات الطوارئ أو بدء الإيقاف والتثبيت دون تعليمات عبر تسلسلك القيادي"}, {"en": "Radio: CALL SIGN → WHERE → WHAT → WHO → WHAT I'M DOING → OVER", "ar": "اللاسلكي: رمز النداء ← أين ← ماذا ← من ← ماذا أفعل ← حوّل"}, {"en": "Team habits: Brief - Confirm - Stay - Support - Speak up", "ar": "عادات الفريق: الإحاطة - التأكيد - البقاء - الدعم - التحدّث"}]}, "role-5": {"drawer": "role", "code": "SMP 2.1", "released": true, "source": "smp21-role-authority/release/v2", "title": {"en": "MY ROLE - DO", "ar": "دوري - ما أفعله"}, "steps": [{"en": "SAFETY FIRST: watch crowd build-up - report early", "ar": "السلامة أولًا: راقب تزايد الحشود - وأبلغ مبكرًا"}, {"en": "SERVICE ALWAYS: Host - Direct - Inform - Assist - Support", "ar": "الخدمة دائمًا: الاستقبال - التوجيه - الإعلام - المساعدة - الدعم"}, {"en": "Keep exits, gangways and emergency routes clear", "ar": "أبقِ المخارج والممرات ومسارات الطوارئ خالية"}, {"en": "Observe - report - escalate", "ar": "راقب - أبلغ - صعّد"}, {"en": "Redirect fans to the right gate, route or service", "ar": "أعِد توجيه المشجعين إلى البوابة أو المسار أو الخدمة الصحيحة"}, {"en": "Move yourself and others away from danger", "ar": "ابتعد أنت والآخرون عن الخطر"}, {"en": "Follow briefings and instructions from your chain", "ar": "اتبع الإحاطات والتعليمات التي تأتيك عبر تسلسلك القيادي"}]}, "fire-1": {"drawer": "fire", "code": "SMP 5.2", "released": true, "source": "smp52-fire-safety/release/v4", "title": {"en": "Before gates open - E-X-I-T-S", "ar": "قبل فتح البوابات — فحص E-X-I-T-S"}, "steps": [{"en": "E Exits & routes open, unlocked, clear", "ar": "E — المخارج ومسارات الوصول مفتوحة وغير مقفلة وخالية."}, {"en": "X extinguishers in place - pin, seal, gauge green (where fitted)", "ar": "X — طفايات الحريق في أماكنها، ومسمار الأمان والختم سليمان، ومقياس الضغط في المنطقة الخضراء (إذا كانت الطفاية مزوّدة به)."}, {"en": "I Ignition - no smoking, safe cables, gas away from heat", "ar": "I — مصادر الاشتعال: لا تدخين، وأسلاك آمنة، والغاز بعيد عن الحرارة."}, {"en": "T Trash cleared", "ar": "T — أزيلوا النفايات."}, {"en": "S Signs lit, fire doors closed - never wedged, never locked", "ar": "S — اللافتات مضاءة، وأبواب الحريق مغلقة — لا تسندوها أو تقفلوها أبدًا."}, {"en": "Quick & safe? Fix + tell supervisor. Can't? Report now - open until fixed.", "ar": "هل يمكنكم معالجة الخلل بسرعة وأمان؟ عالجوه وأبلغوا المشرف. إذا تعذّر ذلك، فأبلغوا عنه فورًا — ويظل البلاغ مفتوحًا حتى معالجة الخلل."}, {"en": "Locked exit: report and STAY (from a safe position).", "ar": "المخرج المقفل: أبلغوا عنه وابقوا بالقرب منه (في مكان آمن)."}]}, "fire-2": {"drawer": "fire", "code": "SMP 5.2", "released": true, "source": "smp52-fire-safety/release/v4", "title": {"en": "Fire or smoke - R.I.E.F.A.", "ar": "حريق أو دخان — R.I.E.F.A."}, "steps": [{"en": "R Raise the alarm - radio 'Incident White' (no radio or no reply: fallback per briefing)", "ar": "R — أطلقوا الإنذار، وأبلغوا عبر اللاسلكي بوقوع «حادث أبيض» (إذا لم يتوفر اللاسلكي أو لم يصلكم رد، فاتبعوا الإجراء البديل الموضح في الإحاطة)."}, {"en": "I Inform - WHERE - WHAT - WHO - WHAT I'M DOING", "ar": "I — أبلغوا: الموقع — ما حدث — الأشخاص — ما الذي تفعلونه."}, {"en": "E Ensure people move away - calm, give a direction", "ar": "E — تأكّدوا من ابتعاد الأشخاص عن الخطر — وجّهوهم بهدوء وحددوا لهم الاتجاه."}, {"en": "F Fight only if authorised, trained and ALL 5 = YES. One extinguisher - not out, or conditions change? Get out.", "ar": "F — كافحوا الحريق فقط إذا كنتم مصرّحًا لكم ومدرّبين وكانت إجاباتكم عن الشروط الخمسة كلها «نعم». استخدموا طفاية واحدة — إذا لم ينطفئ الحريق أو تغيّرت الظروف، فاخرجوا."}, {"en": "A Assist Civil Defence - they command", "ar": "A — ساعدوا الدفاع المدني — فهو يتولى القيادة."}, {"en": "Emergency numbers (only if you cannot reach your supervisor/VOC): 911 (Riyadh, Makkah and Eastern regions) | 997 Red Crescent ambulance", "ar": "أرقام الطوارئ (إذا تعذّر الوصول إلى مشرفكم أو مركز العمليات في الملعب): 911 (في مناطق الرياض ومكة المكرمة والشرقية) | 997 إسعاف الهلال الأحمر."}]}, "fire-3": {"drawer": "fire", "code": "SMP 5.2", "released": true, "source": "smp52-fire-safety/release/v4", "title": {"en": "Extinguishers and P.A.S.S.", "ar": "طفايات الحريق و P.A.S.S."}, "steps": [{"en": "Read the LABEL, not the colour.", "ar": "اقرؤوا الملصق لا اللون."}, {"en": "A solids | B liquids & gas (gas leak: get out, report) | C electrical | D metals | K cooking oil", "ar": "A الأجسام الصلبة | B السوائل والغاز (تسرّب غاز: اخرجوا وأبلغوا) | C الكهرباء | D المعادن | K زيت الطهي"}, {"en": "Powder ABC | CO2 B-C | Water A only | Foam A-B | Wet chemical K | Blanket as labelled", "ar": "البودرة ABC | CO2 B-C | الماء A فقط | الرغوة A-B | الكيماويات الرطبة K | البطانية حسب الملصق"}, {"en": "P.A.S.S. Pull - Aim low - Squeeze - Sweep.", "ar": "P.A.S.S. اسحبوا - صوّبوا إلى الأسفل - اضغطوا - حرّكوا."}, {"en": "Back away facing the fire.", "ar": "تراجعوا إلى الخلف وأنتم تواجهون الحريق."}, {"en": "Evacuation? Follow instructions - see Lesson 10.2 card.", "ar": "إخلاء؟ اتبعوا التعليمات - راجعوا بطاقة الدرس 10.2."}]}, "crowd-1": {"drawer": "crowd", "code": "SMP 6.1", "released": true, "source": "smp61-crowd-safety-matters/release/v3", "title": {"en": "How full is it?", "ar": "ما مدى الامتلاء؟"}, "steps": [{"en": "Fine - about 2 in a 1 m square; walk freely. Green.", "ar": "جيد - نحو 2 في مربع مساحته متر واحد؛ المشي بحرية. أخضر."}, {"en": "Busy - about 3; slower, small gaps. Orange.", "ar": "مزدحم - نحو 3؛ أبطأ، فجوات صغيرة. برتقالي."}, {"en": "Getting full - about 4; touching. Red, from 8 out of 10 full → REPORT NOW.", "ar": "يمتلئ - نحو 4؛ تلامس. أحمر، من «ممتلئ بنسبة 8 من 10» → بلّغوا الآن."}, {"en": "At capacity - nearly 5; shoulder to shoulder. Red → REPORT URGENTLY.", "ar": "عند السعة - قرابة 5؛ كتف إلى كتف. أحمر → بلّغوا بصورة عاجلة."}, {"en": "Getting full? Report NOW - don't wait for 'at capacity'.", "ar": "يمتلئ المكان؟ بلّغوا الآن - لا تنتظروا «عند السعة»."}]}, "crowd-2": {"drawer": "crowd", "code": "SMP 6.1", "released": true, "source": "smp61-crowd-safety-matters/release/v3", "title": {"en": "Danger signs - look & listen", "ar": "علامات الخطر - انظروا واستمعوا"}, "steps": [{"en": "Pushing; swaying / waves", "ar": "دفع؛ تمايل / موجات"}, {"en": "Shouting, screaming", "ar": "صراخ، عويل"}, {"en": "Distressed faces, children lifted", "ar": "وجوه في ضائقة، أطفال مرفوعون"}, {"en": "Arms pinned, climbing out", "ar": "أذرع محشورة، تسلق للخروج"}, {"en": "Flow slowing or stopping", "ar": "تدفق يبطؤ أو يتوقف"}, {"en": "Someone falls", "ar": "شخص يسقط"}, {"en": "Overheating, fainting", "ar": "حرارة شديدة، إغماء"}]}, "crowd-3": {"drawer": "crowd", "code": "SMP 6.1", "released": true, "source": "smp61-crowd-safety-matters/release/v3", "title": {"en": "Surge moments and hot-spots", "ar": "لحظات الاندفاع والنقاط الساخنة"}, "steps": [{"en": "SURGE MOMENTS: late arrivals - kick-off - goals - half-time - final whistle.", "ar": "لحظات الاندفاع: الوصول المتأخر، انطلاق المباراة، الأهداف، استراحة ما بين الشوطين، صافرة النهاية."}, {"en": "HOT-SPOTS: gates, stairways, vomitories, kiosks/toilets/prayer areas, exits, corners, last mile.", "ar": "النقاط الساخنة: البوابات، السلالم، ممرات الدخول، الأكشاك/دورات المياه/أماكن الصلاة، المخارج، الزوايا، الميل الأخير."}]}, "crowd-4": {"drawer": "crowd", "code": "SMP 6.1", "released": true, "source": "smp61-crowd-safety-matters/release/v3", "title": {"en": "What I do", "ar": "ما أفعله"}, "steps": [{"en": "Face the crowd", "ar": "واجهوا الحشد"}, {"en": "Report early (CALL SIGN → WHERE → WHAT → WHO → WHAT I'M DOING → OVER)", "ar": "بلّغوا مبكرًا (اسم النداء → أين → ماذا → من → ماذا أفعل → حوّل)"}, {"en": "Keep routes clear", "ar": "أبقوا الطرق خالية"}, {"en": "Direct to space", "ar": "التوجيه نحو المساحة"}, {"en": "Stop & Hold only on instruction", "ar": "الإيقاف والتثبيت عند التعليمات فقط"}, {"en": "Never push, never step into a dense crowd", "ar": "لا تدفعوا ولا تدخلوا حشدًا كثيفًا أبدًا"}, {"en": "Emergency numbers (only if you cannot reach your supervisor/VOC): 911 unified emergency number | 998 Civil Defence | 997 Red Crescent ambulance.", "ar": "أرقام الطوارئ (فقط إذا تعذّر الوصول إلى المشرف/مركز العمليات): 911 رقم الطوارئ الموحد | 998 الدفاع المدني | 997 إسعاف الهلال الأحمر."}]}, "conflict-1": {"drawer": "conflict", "code": "SMP 9.2", "released": false, "source": "smp92-conflict-deescalation/production/build (not yet released)", "title": {"en": "THE MARSHAL'S LINE", "ar": null}, "steps": [{"en": "OBSERVE - CALM WITH WORDS - REPORT - ESCALATE", "ar": null}, {"en": "NEVER touch, hold, block or remove anyone", "ar": null}, {"en": "Don't say: 'Calm down!' | 'Rules are rules' | 'Not my problem'", "ar": null}, {"en": "Say: 'I can see you're upset' | 'Let me find out' | 'This way, please'", "ar": null}]}, "conflict-2": {"drawer": "conflict", "code": "SMP 9.2", "released": false, "source": "smp92-conflict-deescalation/production/build (not yet released)", "title": {"en": "AMBER AND RED - THE SIGNS", "ar": null}, "steps": [{"en": "Frustration -> Anger -> Aggression -> Violence", "ar": null}, {"en": "AMBER (warning): Raised voice, Pointing, Red face, Staring, Moving closer, Big arm movements, Swearing. Slow down, listen, keep your space, tell your supervisor.", "ar": null}, {"en": "RED (danger): Face goes pale, Fists clench, Hands come up above the waist, Shoulders tense, Quick glances at a target or exit, Body drops lower, Goes suddenly quiet. Step back NOW, get distance, call Security.", "ar": null}]}, "conflict-3": {"drawer": "conflict", "code": "SMP 9.2", "released": false, "source": "smp92-conflict-deescalation/production/build (not yet released)", "title": {"en": "STAY SAFE", "ar": null}, "steps": [{"en": "Side-on, hands open, 1-3 m", "ar": null}, {"en": "Keep a way out; never corner anyone", "ar": null}, {"en": "Work in pairs: contact and cover", "ar": null}, {"en": "Before you go: TACT (Think - Assess - Consider - Take the safest action) + SEW", "ar": null}, {"en": "NEVER touch, hold, block or remove anyone", "ar": null}]}, "conflict-4": {"drawer": "conflict", "code": "SMP 9.2", "released": false, "source": "smp92-conflict-deescalation/production/build (not yet released)", "title": {"en": "CALM IT", "ar": null}, "steps": [{"en": "L - Listen: let them speak; nod", "ar": null}, {"en": "E - Empathise: 'I understand …'", "ar": null}, {"en": "A - Ask: helpful questions", "ar": null}, {"en": "P - Propose: give options", "ar": null}, {"en": "Say: 'I can see you're upset' | 'Let me find out' | 'This way, please'", "ar": null}, {"en": "Don't say: 'Calm down!' | 'Rules are rules' | 'Not my problem'", "ar": null}]}, "conflict-5": {"drawer": "conflict", "code": "SMP 9.2", "released": false, "source": "smp92-conflict-deescalation/production/build (not yet released)", "title": {"en": "GROUND RULES", "ar": null}, "steps": [{"en": "Ground rules: explain - ask - report. Never take items.", "ar": null}, {"en": "Flare? Don't touch - report; lit = Incident White.", "ar": null}, {"en": "Seat dispute: greet both sides - check both tickets - show the right seats - still stuck? Call your supervisor", "ar": null}]}, "conflict-6": {"drawer": "conflict", "code": "SMP 9.2", "released": false, "source": "smp92-conflict-deescalation/production/build (not yet released)", "title": {"en": "WALK AWAY - AND AFTERWARDS", "ar": null}, "steps": [{"en": "Stuck? Exit line - pass it on", "ar": null}, {"en": "Radio: 'Disturbance' or 'Security Assistance' + WHERE - WHAT - WHO - WHAT I'M DOING", "ar": null}, {"en": "Afterwards: incident card; water; talk to your supervisor", "ar": null}, {"en": "Emergency numbers (only if you cannot reach your supervisor/VOC): 911 unified emergency number | 998 Civil Defence | 997 Red Crescent ambulance.", "ar": null}]}, "lost-1": {"drawer": "lost", "code": "SMP 9.3", "released": true, "source": "smp93-safeguarding-lost-persons/release/v6", "title": {"en": "SAFEGUARDING", "ar": "الحماية"}, "steps": [{"en": "RECOGNISE - DON'T INVESTIGATE - REPORT", "ar": "لاحظ - لا تحقق بنفسك - بلغ"}, {"en": "Danger now? Nearest Security / police, then report.", "ar": "خطر الآن؟ أقرب فرد من الامن / الشرطة، ثم بلغوا."}, {"en": "Woman or girl? Ask a female colleague to help.", "ar": "امرأة أو فتاة؟ اطلبوا من زميلة أن تساعد."}]}, "lost-2": {"drawer": "lost", "code": "SMP 9.3", "released": true, "source": "smp93-safeguarding-lost-persons/release/v6", "title": {"en": "SOMEONE IS LOST", "ar": "شخص مفقود"}, "steps": [{"en": "1 Calm the person reporting", "ar": "1 هدّئوا الشخص المُبلِّغ"}, {"en": "2 Describe: age, boy/girl, height, hair, clothes, name - where and when last seen", "ar": "2 صِفوا: العمر، ولد/بنت، الطول، الشعر، الملابس، الاسم - وأين ومتى شوهد آخر مرة"}, {"en": "3 Look around your area (stay at post)", "ar": "3 انظروا حول منطقتكم (ابقوا في موقعكم)"}, {"en": "4 Call your supervisor", "ar": "4 اتصلوا بالمشرف"}, {"en": "Note the reporter's name and seat number; ask them to stay until your supervisor arrives", "ar": "سجّلوا اسم المُبلِّغ ورقم مقعده؛ واطلبوا منه البقاء حتى يصل المشرف"}, {"en": "-> Supervisor takes over: same place, 15 minutes, wait for instructions", "ar": "-> المشرف يتولى الأمر: المكان نفسه، 15 دقيقة، انتظار التعليمات"}]}, "lost-3": {"drawer": "lost", "code": "SMP 9.3", "released": true, "source": "smp93-safeguarding-lost-persons/release/v6", "title": {"en": "SOMEONE IS FOUND", "ar": "شخص تم العثور عليه"}, "steps": [{"en": "1 Introduce yourself - 'I work for the event'", "ar": "1 عرّفوا بأنفسكم - «أنا أعمل في الفعالية»"}, {"en": "2 Check for an ID wristband", "ar": "2 تحققوا من وجود سوار تعريف"}, {"en": "3 Girl or woman? Female colleague", "ar": "3 فتاة أو امرأة؟ زميلة"}, {"en": "4 Stay with them - same place, public view", "ar": "4 ابقوا معه - المكان نفسه، على مرأى من الناس"}, {"en": "5 Call your supervisor", "ar": "5 اتصلوا بالمشرف"}, {"en": "-> Hand-over ONLY through supervisor to: ______ (write the name from your briefing)", "ar": "-> التسليم فقط عبر المشرف إلى: ______ (اكتبوا الاسم من الإحاطة)"}, {"en": "Info Point: ______ (write where from your briefing)", "ar": "نقطة المعلومات: ______ (اكتبوا المكان من الإحاطة)"}]}, "lost-4": {"drawer": "lost", "code": "SMP 9.3", "released": true, "source": "smp93-safeguarding-lost-persons/release/v6", "title": {"en": "PRIVACY", "ar": "الخصوصية"}, "steps": [{"en": "No names on open radio", "ar": "لا أسماء عبر اللاسلكي المفتوح"}, {"en": "No photos", "ar": "لا صور"}, {"en": "Nothing on your phone or social media", "ar": "لا شيء على هاتفكم أو وسائل التواصل الاجتماعي"}, {"en": "Danger now? Nearest Security / police, then report.", "ar": "خطر الآن؟ أقرب فرد من الامن / الشرطة، ثم أبلغوا."}, {"en": "Emergency numbers (only if you cannot reach your supervisor/VOC): 911 unified emergency number | 998 Civil Defence | 997 Red Crescent ambulance.", "ar": "أرقام الطوارئ (فقط إذا تعذر الوصول إلى المشرف أو مركز العمليات في الملعب): 911 الرقم الموحد للطوارئ | 998 الدفاع المدني | 997 إسعاف الهلال الأحمر."}]}, "shelter-1": {"drawer": "shelter", "code": "SMP 10.3", "released": false, "source": "smp103-missile-threat-emergency-response/production/build (not yet released)", "title": {"en": "Civil Defence ask everyone to", "ar": null}, "steps": [{"en": "Stay calm", "ar": null}, {"en": "Go to the nearest safe place - inside, inner area", "ar": null}, {"en": "Away from windows and glass", "ar": null}, {"en": "Avoid open areas, balconies, rooftops", "ar": null}, {"en": "Don't film - don't approach anything fallen", "ar": null}, {"en": "Follow official instructions", "ar": null}, {"en": "Stay until the all-clear", "ar": null}]}, "shelter-2": {"drawer": "shelter", "code": "SMP 10.3", "released": false, "source": "smp103-missile-threat-emergency-response/production/build (not yet released)", "title": {"en": "Your role: move to shelter", "ar": null}, "steps": [{"en": "Stay at your post - listen for the instruction. No instruction after about 15 seconds? Tell your supervisor", "ar": null}, {"en": "Shelter instruction? Lead fans calmly to the shelter area", "ar": null}, {"en": "Don't send fans into open areas on your own", "ar": null}, {"en": "Tents, glass and temporary structures are not shelter", "ar": null}, {"en": "Gates: stop or redirect only on the control room's instruction - words, never force", "ar": null}, {"en": "Shelter area getting full? Stop and tell your supervisor", "ar": null}]}, "shelter-3": {"drawer": "shelter", "code": "SMP 10.3", "released": false, "source": "smp103-missile-threat-emergency-response/production/build (not yet released)", "title": {"en": "Your role: in the shelter and after", "ar": null}, "steps": [{"en": "In shelter: inner walls, away from glass; crouch low and protect head and neck if told", "ar": null}, {"en": "Second alert? Stay put. No going back for belongings", "ar": null}, {"en": "Help children, older and disabled fans - radio exact locations", "ar": null}, {"en": "Fallen object? 'Item of Interest' - don't approach", "ar": null}, {"en": "No filming, no rumours", "ar": null}, {"en": "All-clear? Wait for the instruction to move", "ar": null}, {"en": "Shelter yourself too. Then help others.", "ar": null}]}, "shelter-4": {"drawer": "shelter", "code": "SMP 10.3", "released": false, "source": "smp103-missile-threat-emergency-response/production/build (not yet released)", "title": {"en": "Calm words", "ar": null}, "steps": [{"en": "'We're moving everyone to the safest place inside - stay with me, this way.'", "ar": null}, {"en": "Shelter yourself too. Then help others.", "ar": null}]}, "shelter-5": {"drawer": "shelter", "code": "SMP 10.3", "released": false, "source": "smp103-missile-threat-emergency-response/production/build (not yet released)", "title": {"en": "My venue and emergency numbers", "ar": null}, "steps": [{"en": "My shelter area: ________________", "ar": null}, {"en": "Radio code word: ________________", "ar": null}, {"en": "Fill these in at your venue briefing, on the shelter-route walk-through", "ar": null}, {"en": "Emergency numbers (only if you cannot reach your supervisor/VOC): 911 unified emergency number - Riyadh, Jeddah and Al Khobar | 998 Civil Defence outside those regions | 997 Red Crescent ambulance | 999 Police", "ar": null}]}, "info-1": {"drawer": "info", "code": "SMP 15.2", "released": false, "source": "smp152-info-point-lost-found/production/build (not yet released)", "title": {"en": "Info Point & Lost & Found", "ar": null}, "steps": [{"en": "Info Point: information | stroller parking | Lost & Found | wristbands | feedback | meeting point", "ar": null}, {"en": "Lost something? → Info Point to report", "ar": null}, {"en": "Found something? → thank them → Info Point", "ar": null}, {"en": "Never keep | never open | never hand to a claimer", "ar": null}, {"en": "Bag left alone? NOT lost property - don't touch, report", "ar": null}]}, "info-2": {"drawer": "info", "code": "SMP 15.2", "released": false, "source": "smp152-info-point-lost-found/production/build (not yet released)", "title": {"en": "RIS & children's wristbands", "ar": null}, "steps": [{"en": "Can't go in? Security decide → Rule - reason - option → RIS: store, label, collect after", "ar": null}, {"en": "Not confiscation | not searching | dangerous items never stored → supervisor", "ar": null}, {"en": "Wristband: Ask - Fill - Fasten - Keep private", "ar": null}, {"en": "Only what the form asks | no photos | forms to the Info Point", "ar": null}]}, "info-3": {"drawer": "info", "code": "SMP 15.2", "released": false, "source": "smp152-info-point-lost-found/production/build (not yet released)", "title": {"en": "My locations and help", "ar": null}, "steps": [{"en": "My Info Point: {field:infoPoint}", "ar": null}, {"en": "RIS: {field:ris}", "ar": null}, {"en": "Lost child? Supervisor first - 15-minute protocol (Lesson 9.3). Check for a wristband.", "ar": null}, {"en": "Emergency numbers (only if you cannot reach your supervisor/VOC): 911 unified emergency number | 998 Civil Defence | 997 Red Crescent ambulance.", "ar": null}]}}, "emergency": [{"card": "fire-2", "label": "Fire or smoke", "icon": "flame"}, {"card": "shelter-2", "label": "Missile alert: move to shelter", "icon": "shield"}, {"card": "lost-2", "label": "Someone is lost", "icon": "search"}, {"card": "lost-3", "label": "Someone is found", "icon": "child"}, {"card": "crowd-2", "label": "Crowd danger signs", "icon": "crowd"}, {"card": "conflict-2", "label": "Aggression: amber and red", "icon": "alert"}], "numbers": "shelter-5", "fields": [{"key": "supervisor", "label": "My supervisor"}, {"key": "areaLeader", "label": "My Area Leader"}, {"key": "channel", "label": "My channel"}, {"key": "shelter", "label": "My shelter area"}, {"key": "codeword", "label": "Radio code word"}, {"key": "infoPoint", "label": "My Info Point"}, {"key": "ris", "label": "RIS (item storage)"}, {"key": "handover", "label": "Lost person hand-over to"}], "arApproved": {"EMERGENCY": "طوارئ", "Life in danger? Call 911 now. Don't wait for your supervisor.": "خطر على الحياة؟ اتصلوا على 911 فورًا، وما تنتظرون مشرفكم.", "Someone's life is in danger": "حياة شخص في خطر", "Someone is badly hurt, unconscious or not breathing": "شخص مصاب إصابة بالغة، أو مغمى عليه، أو ما يتنفس", "Fire or smoke and people can't get away": "حريق أو دخان، وما يقدر الناس يبتعدون", "Someone has a weapon or is attacking people": "شخص معه سلاح أو يعتدي على الناس", "People are being crushed in the crowd": "ناس عالقين في تدافع وسط الحشد", "You are in danger yourself": "أنتم نفسكم في خطر", "Then tell your supervisor as soon as you can.": "بعدين بلّغوا مشرفكم في أقرب وقت ممكن.", "Call 911": "اتصلوا بالرقم 911", "Other emergency numbers: to be confirmed.": "أرقام الطوارئ الأخرى: قيد التأكيد.", "How to report": "كيفية الإبلاغ", "Who you tell, and how": "من تبلّغون، وكيف", "Marshals": "منظِّمو الحشود", "No radio": "بدون جهاز لاسلكي", "You": "أنتم", "Marshal": "منظِّم الحشود", "Supervisor": "المشرف", "Tell your supervisor. Use the code.": "بلّغوا مشرفكم. استخدموا الرمز.", "Can't find your supervisor? Tell a marshal you can see. They pass it on.": "ما لقيتوا مشرفكم؟ بلّغوا منظِّم حشود تشوفونه، وهو يوصّل الرسالة.", "Always keep 2 marshals in sight.": "خلّوا دايم اثنين من منظِّمي الحشود في مرمى بصركم.", "Supervisors": "المشرفون", "Radio": "جهاز اللاسلكي", "Report incidents by radio, using the same codes as everyone else.": "بلّغوا عن الحوادث عبر الجهاز اللاسلكي باستخدام الرموز نفسها اللي يستخدمها الكل.", "Be ready to receive: a code may come to you directly or along the LOS chain.": "خلّكم جاهزين للاستلام: ممكن يجيكم الرمز مباشرةً أو عبر سلسلة خط الرؤية.", "Channel, call signs and radio procedure: to be confirmed.": "القناة، ورموز النداء، وإجراءات الاتصال اللاسلكي: مو مؤكدة.", "Code 1": "الرمز 1", "Code 2": "الرمز 2", "Code 3": "الرمز 3", "Most urgent": "الأشد إلحاحًا", "Urgent": "عاجل", "Not urgent": "غير عاجل", "Codes and colours are not confirmed yet. These are placeholders.": "الرموز والألوان لسّا ما تأكدت، وهي مؤقتة الحين.", "SMP · MATCH DAY": "SMP · يوم المباراة", "Use this page on match day to check what to do, fast. It has every job aid from your SMP lessons.": "استخدموا هذي الصفحة يوم المباراة عشان تعرفون وش تسوون بسرعة. وهي تضم كل أدلة العمل السريعة من دروس SMP.", "Someone in danger? Call 911. It is at the top.": "شخص في خطر؟ اتصلوا على 911. تلقونه في أعلى الصفحة.", "Need to report something? See How to report.": "تبون تبلّغون عن أمر ما؟ شوفوا قسم «كيفية الإبلاغ».", "Not sure what to do? Find the job aid. Search, or open your lesson.": "مو متأكدين وش تسوون؟ دوّروا على دليل العمل السريع، أو افتحوا درسكم.", "Field notes and resources": "الملاحظات الميدانية والمراجع", "Field notes": "الملاحظات الميدانية", "Type a word here": "اكتبوا كلمة هنا", "Find a job aid": "ابحثوا عن دليل العمل السريع", "Search every card": "ابحثوا في جميع البطاقات", "Type a word, like fire or lost child. The cards that match show below. Tap one to open it.": "اكتبوا كلمة، مثل: حريق أو طفل مفقود. بتطلع البطاقات المطابقة في الأسفل. اضغطوا على إحداها عشان تفتحونها.", "Try one of these:": "جرّبوا إحدى هذي الكلمات:", "fire": "حريق", "lost child": "طفل مفقود", "shelter": "ملجأ", "crowd": "حشد", "exit": "مَخْرَج", "extinguisher": "طفاية حريق", "wristband": "سوار", "seat": "مقعد", "flare": "شعلة", "lost property": "المفقودات", "In an emergency": "في حالات الطوارئ", "Tap a card to open it": "اضغطوا على بطاقة لفتحها", "All job aids": "جميع أدلة العمل السريعة", "By lesson, in lesson order": "حسب الدرس، وبترتيب الدروس", "Lesson": "الدرس", "{n} job aids": "{n} أدلة عمل سريعة", "Print this lesson's cards (PDF)": "طباعة بطاقات هذا الدرس (PDF)", "RESULTS": "النتائج", "Nothing found. Try another word, like fire, lost or gate.": "لم يتم العثور على نتائج. جرّبوا كلمة ثانية، مثل: حريق أو مفقود أو بوابة.", "Lesson not yet released": "الدرس لسّا ما نُشر", "Arabic for this card is waiting for the approved translation.": "الترجمة العربية لهذي البطاقة بانتظار الاعتماد.", "Language": "اللغة", "My venue notes": "ملاحظاتي الخاصة بالملعب", "Fill in at your venue briefing": "عبّوها وقت الإحاطة في الملعب", "Open my notes": "افتحوا ملاحظاتي", "Saved on this device only. These fill the blanks on your cards.": "تُحفظ على هذا الجهاز فقط، وتُستخدم لتعبئة الفراغات في بطاقاتكم.", "My supervisor": "مشرفي", "My Area Leader": "قائد منطقتي", "My channel": "قناتي", "My shelter area": "منطقة الاحتماء الخاصة بي", "Radio code word": "الكلمة الرمزية", "My Info Point": "نقطة المعلومات الخاصة بي", "RIS (item storage)": "حفظ المواد المقيدة (RIS)", "Lost person hand-over to": "تسليم الشخص المفقود إلى", "Fire or smoke": "حريق أو دخان", "Missile alert: move to shelter": "إنذار صاروخي: التوجه إلى الملجأ", "Someone is lost": "شخص مفقود", "Someone is found": "شخص تم العثور عليه", "Crowd danger signs": "علامات الخطر في الحشد", "Aggression: amber and red": "العدوانية: العلامات البرتقالية والحمراء", "My role and who leads": "دوري ومن يتولى القيادة", "Crowd safety": "سلامة الحشود", "Fire safety": "سلامة الحريق", "Missile alert and shelter": "الإنذار الصاروخي والاحتماء", "Conflict and calming things down": "النزاعات وتهدئة المواقف", "Safeguarding and lost persons": "الحماية والأشخاص المفقودون", "Info Point and lost property": "نقطة المعلومات والمفقودات", "The tournament and venues": "البطولة والملاعب", "Your course and practical day": "دورتكم واليوم التطبيقي"}, "call911": {"number": "911", "lead": "Life in danger? Call 911 now. Don't wait for your supervisor.", "when": ["Someone's life is in danger", "Someone is badly hurt, unconscious or not breathing", "Fire or smoke and people can't get away", "Someone has a weapon or is attacking people", "People are being crushed in the crowd", "You are in danger yourself"], "then": "Then tell your supervisor as soon as you can.", "other": "Other emergency numbers: to be confirmed."}, "comms": {"title": "How to report an incident", "marshal": {"who": "Marshals", "kit": "No radio", "first": "Tell your supervisor. Use the code.", "ifnot": "Can't find your supervisor? Tell a marshal you can see. They pass it on.", "always": "Always keep 2 marshals in sight."}, "supervisor": {"who": "Supervisors", "kit": "Radio", "steps": ["Report incidents by radio, using the same codes as everyone else.", "Be ready to receive: a code may come to you directly or along the LOS chain."], "tbd": "Channel, call signs and radio procedure: to be confirmed."}, "codes": [{"word": "Code 1", "meaning": "Most urgent", "color": "#C62828", "shape": "triangle"}, {"word": "Code 2", "meaning": "Urgent", "color": "#E07A00", "shape": "diamond"}, {"word": "Code 3", "meaning": "Not urgent", "color": "#1D5FBF", "shape": "circle"}], "codesNote": "Codes and colours are not confirmed yet. These are placeholders."}, "footer": ["سري – مخصص لموظفي كأس آسيا 2027 السعودية™ المصرح لهم فقط.  يُحظر نسخ هذا المستند أو مشاركته أو توزيعه. للإستخدام الحصري من قِبل الشخص الذي قام بطباعة هذا المستند.", "CONFIDENTIAL – AFC2027 authorized personnel only. Do not copy, share or distribute. For use only by the person who printed this document."]};
+const UI0={title:"Field notes and resources",kicker:"SMP · MATCH DAY",
+ why:"Use this page on match day to check what to do, fast. It has every job aid from your SMP lessons.",
+ how:[["phone","em","<b>Someone in danger?</b> Call 911. It is at the top."],
+      ["talk","report","<b>Need to report something?</b> See How to report."],
+      ["search","find","<b>Not sure what to do?</b> Find the job aid. Search, or open your lesson."]],
+ report:"How to report",reportSub:"Who you tell, and how",
+ find:"Find a job aid",findSub:"Search every card",
+ findHelp:"Type a word, like <b>fire</b> or <b>lost child</b>. The cards that match show below. Tap one to open it.",
+ search:"Type a word here",tryLabel:"Try one of these:",tries:["fire","lost child","shelter","crowd","exit","extinguisher","wristband","seat","flare","lost property"],em:"In an emergency",emSub:"Tap a card to open it",
+ notes:"My venue notes",notesSub:"Fill in at your venue briefing",notesOpen:"Open my notes",notesHelp:"Saved on this device only. These fill the blanks on your cards.",
+ all:"All job aids",allSub:"By lesson, in lesson order",lesson:"Lesson",aids:"job aids",
+ pdf:"Print this lesson's cards (PDF)",back:"Field notes",results:"RESULTS",none:"Nothing found. Try another word, like fire, lost or gate.",
+ draft:"Lesson not yet released",arPending:"Arabic for this card is waiting for the approved translation."};
+const ICON={flame:'<path d="M12 3c1 4 5 5 5 10a5 5 0 0 1-10 0c0-3 2-4 2-6 2 1 3 3 3 3s1-3 0-7z"/>',
+ shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>',
+ search:'<circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/>',
+ child:'<circle cx="12" cy="6" r="2.5"/><path d="M12 9v6M8 11h8M10 21l2-6 2 6"/>',
+ crowd:'<circle cx="6" cy="8" r="2"/><circle cx="12" cy="7" r="2"/><circle cx="18" cy="8" r="2"/><path d="M3 18v-3a3 3 0 0 1 6 0M9 18v-4a3 3 0 0 1 6 0v4M15 18v-3a3 3 0 0 1 6 0"/>',
+ alert:'<path d="M12 4l9 16H3z"/><path d="M12 10v4M12 17v.5"/>',
+ phone:'<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>',
+ doc:'<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/>',
+ talk:'<path d="M4 5h16v10H9l-5 4z"/><path d="M8 9h8M8 12h5"/>',
+ book:'<path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5M8 7h7"/>',
+ trophy:'<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8"/>',
+ badge:'<rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M8 17a4 4 0 0 1 8 0"/>',
+ info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>',
+ pencil:'<path d="M4 20l1-5L16 4l4 4L9 19z"/><path d="M14 6l4 4"/>',
+ folder:'<path d="M3 6h7l2 2h9v11H3z"/>',
+ eye:'<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>'};
+let UI=UI0;
+const AR=(D&&D.arApproved)||{};
+const strip=s=>String(s).replace(/<[^>]+>/g,'').trim();
+const L=s=>(lang==='ar'&&typeof s==='string'&&AR[strip(s)])?AR[strip(s)]:s;
+const tr=o=>typeof o==='string'?L(o):Array.isArray(o)?o.map(tr):(o&&typeof o==='object')?Object.fromEntries(Object.entries(o).map(([k,v])=>[k,tr(v)])):o;
+const aidsN=n=>lang==='ar'&&AR['{n} job aids']?AR['{n} job aids'].replace('{n}',n):n+' '+UI.aids;
+const svg=n=>'<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+ICON[n]+'</svg>';
+/* people pictures: marshal = hi-vis vest, supervisor = dark with a star */
+function fig(kind,label){
+  const sup=kind==='sup',body=sup?'var(--navy)':'#7d8ca3';
+  let s='<svg viewBox="0 0 40 44" aria-hidden="true"><circle cx="20" cy="9" r="7" fill="#C89B7B"/><path d="M6 44v-12a14 14 0 0 1 28 0v12z" fill="'+body+'"/>';
+  if(!sup)s+='<path d="M11 24l9 14 9-14 3 3-3 17H11L8 27z" fill="var(--vest)"/><path d="M12 33h16" stroke="#fff" stroke-width="2"/>';
+  else s+='<path d="M20 26l2 4.2 4.6.6-3.4 3.2.9 4.6-4.1-2.3-4.1 2.3.9-4.6-3.4-3.2 4.6-.6z" fill="#fff"/>';
+  return '<span class="fig'+(kind==='you'?' you':'')+'">'+s+'</svg><span>'+esc(L(label))+'</span></span>';
+}
+const arrow='<svg class="arr" viewBox="0 0 18 44" aria-hidden="true"><path d="M1 22h13M9 16l6 6-6 6" fill="none" stroke="var(--orange)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const noRadio='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="7" width="8" height="14" rx="1.5" fill="none" stroke="var(--navy)" stroke-width="2"/><path d="M10 7V2" stroke="var(--navy)" stroke-width="2" stroke-linecap="round"/><path d="M4 4l16 18" stroke="var(--red)" stroke-width="2.4" stroke-linecap="round"/></svg>';
+const radio='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="7" width="8" height="14" rx="1.5" fill="none" stroke="var(--navy)" stroke-width="2"/><path d="M10 7V2M10 12h4M10 15h4" stroke="var(--navy)" stroke-width="2" stroke-linecap="round"/></svg>';
+let lang='en';
+const store={get(k){try{return localStorage.getItem('fn:'+k)||''}catch(e){return''}},set(k,v){try{localStorage.setItem('fn:'+k,v)}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const T=x=>(lang==='ar'&&x.ar)?x.ar:x.en;
+/* card titles in capitals read as shouting and are hard to read: show them in sentence case (wording unchanged) */
+function TT(x){const s=T(x);if(lang==='en'&&/[A-Z]{3}/.test(s)&&s===s.toUpperCase()){const l=s.toLowerCase();return l.charAt(0).toUpperCase()+l.slice(1)}return s}
+const FIELDMAP={supervisor:'supervisor',areaLeader:'areaLeader',channel:'channel',infoPoint:'infoPoint',ris:'ris'};
+function fillBlanks(s){
+  s=esc(s).replace(/\{field:(\w+)\}/g,(m,k)=>{const v=store.get(FIELDMAP[k]||k);return v?'<span class="fill">'+esc(v)+'</span>':'<span class="fill empty">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>'});
+  const blank=(key)=>{const v=store.get(key);return v?'<span class="fill">'+esc(v)+'</span>':null};
+  s=s.replace(/^(My shelter area: )_+/,(m,a)=>blank('shelter')?a+blank('shelter'):m)
+     .replace(/^(Radio code word: )_+/,(m,a)=>blank('codeword')?a+blank('codeword'):m)
+     .replace(/(supervisor to: )_+ \(write the name from your briefing\)/,(m,a)=>blank('handover')?a+blank('handover'):m)
+     .replace(/^(Info Point: )_+ \(write where from your briefing\)/,(m,a)=>blank('infoPoint')?a+blank('infoPoint'):m);
+  return s;
+}
+function stepHTML(x){
+  let s=T(x),b='',cls='';
+  let m;
+  if(lang==='en'&&(m=s.match(/^([A-Z])\s+(?=[A-Za-z])/))&&!/^(A|I)\s+[a-z]/.test(s)){b=m[1];s=s.slice(m[0].length)}
+  else if((m=s.match(/^(\d)\s+/))){b=m[1];s=s.slice(m[0].length)}
+  else if((m=s.match(/^✖\s*/))){b='✕';cls='x';s=s.slice(m[0].length)}
+  else if((m=s.match(/^(->|→)\s*/))){b='→';cls='go';s=s.slice(m[0].length)}
+  else if((m=s.match(/^([A-Z]) - /))){b=m[1];s=s.slice(m[0].length)}
+  else {b='';cls='dot'}
+  return '<li><span class="badge '+cls+'">'+esc(b)+'</span><span>'+fillBlanks(s)+'</span></li>';
+}
+const card=k=>D.cards[k];
+const drawerOf=k=>D.drawers.find(d=>d.id===card(k).drawer);
+const isEm=k=>D.emergency.some(e=>e.card===k);
+function firstLine(k){const c=card(k);const s=c.steps[0];return s?T(s).replace(/^(\d|[A-Z])\s+/,''):''}
+function itemBtn(k,showCode){const c=card(k);return '<button class="item" data-card="'+k+'"><b>'+esc(TT(c.title))+'</b><span class="tag">'+(showCode?esc(L(UI0.lesson)+' '+c.code.replace(/^SMP\s*/,'')):'')+'</span><span class="chev"></span></button>'}
+const band=(cls,icon,title,sub)=>'<h2 class="band '+cls+'">'+svg(icon)+'<span>'+title+(sub?'<small>'+sub+'</small>':'')+'</span></h2>';
+
+function home(){
+  const S=tr(D.call911),C=tr(D.comms);
+  let h='<div class="head"><p class="kicker">'+UI.kicker+'</p><h1>'+UI.title+'</h1><p class="why">'+UI.why+'</p>';
+  h+='<ol class="howto">'+UI.how.map(x=>'<li><span class="ic c-'+x[1]+'">'+svg(x[0])+'</span><span>'+x[2]+'</span></li>').join('')+'</ol></div>';
+  /* 1 — 911 */
+  h+='<section class="sos" aria-label="Emergency 911"><p class="sos-k">'+esc(L('EMERGENCY'))+'</p><a class="sos-n" href="tel:'+S.number+'" aria-label="Call '+S.number+'">'+S.number+'</a>';
+  h+='<p class="sos-lead">'+esc(S.lead)+'</p><ul class="sos-when">'+S.when.map(w=>'<li>'+esc(w)+'</li>').join('')+'</ul>';
+  h+='<p class="sos-then">'+esc(S.then)+'</p><a class="sos-call" href="tel:'+S.number+'">'+svg('phone')+esc(L('Call 911'))+'</a><p class="sos-other">'+esc(S.other)+'</p></section>';
+  /* 2 — how to report */
+  const M=C.marshal,shape=(c)=>'<svg class="cshape" viewBox="0 0 20 20" aria-hidden="true"><path fill="'+c.color+'" d="'+({triangle:'M10 2 19 18H1z',diamond:'M10 1 19 10 10 19 1 10z',circle:'M10 2a8 8 0 1 0 0 16 8 8 0 1 0 0-16z'}[c.shape])+'"/></svg>';
+  h+='<section class="panel">'+band('b-report','talk',UI.report,UI.reportSub)+'<div class="pbody">';
+  h+='<p class="who"><b>'+esc(M.who)+'</b><span class="kit">'+noRadio+esc(M.kit)+'</span></p>';
+  h+='<div class="step"><span class="num">1</span><div><div class="pics">'+fig('you','You')+arrow+fig('sup','Supervisor')+'</div><p class="say">'+esc(M.first)+'</p></div></div>';
+  h+='<div class="step"><span class="num">2</span><div><div class="pics">'+fig('you','You')+arrow+fig('m','Marshal')+arrow+fig('m','Marshal')+arrow+fig('sup','Supervisor')+'</div><p class="say">'+esc(M.ifnot)+'</p></div></div>';
+  h+='<div class="keep"><span class="eye">'+svg('eye')+'</span><div class="pics" style="margin:0">'+fig('m','')+fig('m','')+'<p class="say" style="align-self:center;margin-inline-start:6px">'+esc(M.always)+'</p></div></div>';
+  h+='<div class="lane2"><p class="who"><b>'+esc(C.supervisor.who)+'</b><span class="kit">'+radio+esc(C.supervisor.kit)+'</span></p><ul>'+C.supervisor.steps.map(s=>'<li>'+esc(s)+'</li>').join('')+'</ul><p class="tbd">'+esc(C.supervisor.tbd)+'</p>';
+  h+='<div class="codes">'+C.codes.map(c=>'<span class="code">'+shape(c)+'<b>'+esc(c.word)+'</b><small>'+esc(c.meaning)+'</small></span>').join('')+'</div><p class="tbd">'+esc(C.codesNote)+'</p></div></div></section>';
+  /* 3 — find */
+  h+='<section class="panel">'+band('b-find','search',UI.find,UI.findSub)+'<div class="pbody"><p class="help">'+UI.findHelp+'</p>';
+  h+='<div class="search">'+svg('search')+'<input id="q" type="search" placeholder="'+UI.search+'" aria-label="'+UI.find+'"></div><p class="tryl">'+UI.tryLabel+'</p><div class="tries">'+UI0.tries.map(w=>'<button class="try" data-q="'+esc(w)+'">'+svg('search')+esc(L(w))+'</button>').join('')+'</div><div id="res" class="hidden"></div></div></section>';
+  h+='<div id="homebody">';
+  /* 4 — emergency cards */
+  h+='<section class="panel">'+band('b-em','alert',UI.em,UI.emSub)+'<div class="pbody"><div class="emgrid">';
+  D.emergency.forEach(e=>{h+='<button class="em" data-card="'+e.card+'">'+svg(e.icon)+'<b>'+esc(lang==='ar'&&card(e.card).title.ar?card(e.card).title.ar:L(e.label))+'</b><span>'+esc(firstLine(e.card))+'</span></button>'});
+  h+='</div></div></section>';
+  /* 5 — venue notes */
+  h+='<section class="panel">'+band('b-notes','pencil',UI.notes,UI.notesSub)+'<div class="pbody"><button class="notesbtn" id="notesrow" aria-expanded="false"><span>'+UI.notesOpen+'</span><span class="chev"></span></button><div class="notes">';
+  D.fields.forEach(f=>{h+='<label for="f-'+f.key+'">'+esc(L(f.label))+'</label><input id="f-'+f.key+'" data-field="'+f.key+'" value="'+esc(store.get(f.key))+'" autocomplete="off">'});
+  h+='<p>'+UI.notesHelp+'</p></div></div></section>';
+  /* 6 — all job aids, in lesson order */
+  h+='<section class="panel">'+band('b-all','folder',UI.all,UI.allSub)+'<div class="pbody">';
+  D.drawers.forEach(d=>{
+    h+='<button class="lrow" data-drawer="'+d.id+'" aria-expanded="false"><span class="lic">'+svg(d.icon)+'</span><span class="lt"><small>'+UI.lesson+' '+esc(d.code.replace(/^SMP\s*/,''))+'</small><b>'+esc(L(d.label))+'</b>'+(d.released?'':'<em>'+UI.draft+'</em>')+'</span><span class="cnt">'+esc(aidsN(d.cards.length))+'</span><span class="chev"></span></button><div class="drawer">';
+    d.cards.forEach(k=>h+=itemBtn(k,false));
+    if(d.pdf)h+='<a class="pdf" href="'+d.pdf+'" target="_blank" rel="noopener">'+svg('doc')+UI.pdf+'</a>';
+    h+='</div>';
+  });
+  h+='</div></section></div>'+foot();
+  main.innerHTML=h;
+  const q=document.getElementById('q');q.addEventListener('input',e=>search(e.target.value));
+  main.querySelectorAll('.try').forEach(b=>b.addEventListener('click',()=>{q.value=b.dataset.q;search(b.dataset.q);document.getElementById('res').scrollIntoView({block:'start',behavior:'smooth'})}));
+  main.querySelectorAll('.lrow,.notesbtn').forEach(r=>r.addEventListener('click',()=>{const o=r.classList.toggle('open');r.setAttribute('aria-expanded',o)}));
+  main.querySelectorAll('[data-field]').forEach(i=>i.addEventListener('input',()=>store.set(i.dataset.field,i.value.trim())));
+  bindCards();
+}
+function search(q){
+  q=q.trim().toLowerCase();const res=document.getElementById('res'),body=document.getElementById('homebody');
+  if(!q){res.classList.add('hidden');body.classList.remove('hidden');return}
+  const words=q.split(/\s+/).filter(w=>w.length>1||/\d/.test(w));
+  const score=k=>{const c=card(k);const head=(T(c.title)+' '+c.title.en+' '+drawerOf(k).label).toLowerCase();const txt=c.steps.map(s=>s.en+' '+(s.ar||'')).join(' ').toLowerCase();
+    let n=0;words.forEach(w=>{if(head.includes(w))n+=3;else if(txt.includes(w))n+=1});return n?n+(isEm(k)?2:0):0};
+  const hits=Object.keys(D.cards).map(k=>[k,score(k)]).filter(x=>x[1]>0).sort((a,b)=>b[1]-a[1]).map(x=>x[0]);
+  res.innerHTML='<p class="rh">'+UI.results+' ('+hits.length+')</p>'+(hits.length?hits.map(k=>itemBtn(k,true)).join(''):'<p class="none">'+UI.none+'</p>');
+  res.classList.remove('hidden');body.classList.add('hidden');bindCards(res);
+}
+function show(k){
+  const c=card(k),d=drawerOf(k),em=isEm(k);
+  const arMissing=lang==='ar'&&(!c.title.ar||c.steps.some(s=>!s.ar));
+  let h='<button class="crumb" id="back">'+UI.back+'</button><div class="cardwrap"><article class="card'+(em?' emc':'')+'">';
+  h+='<p class="cmeta"><span>'+UI.lesson+' '+esc(d.code.replace(/^SMP\s*/,''))+' · '+esc(L(d.label))+'</span>'+(c.released?'':'<span class="draft">'+UI.draft+'</span>')+'</p>';
+  h+='<h1 class="ctitle">'+esc(TT(c.title))+'</h1>';
+  if(arMissing)h+='<p class="pending">'+UI.arPending+'</p>';
+  h+='<ol class="steps">'+c.steps.map(stepHTML).join('')+'</ol>';
+  const others=d.cards.filter(x=>x!==k);
+  if(others.length){h+='<div class="more"><p class="rh">'+esc(lang==='ar'?L(d.label):d.label.toUpperCase())+'</p>'+others.map(x=>itemBtn(x,false)).join('')+'</div>'}
+  if(d.pdf)h+='<a class="pdf" href="'+d.pdf+'" target="_blank" rel="noopener">'+svg('doc')+UI.pdf+'</a>';
+  h+='</article></div>'+foot();
+  main.innerHTML=h;window.scrollTo(0,0);
+  document.getElementById('back').addEventListener('click',()=>history.length>1&&location.hash?history.back():go(''));
+  bindCards();
+}
+function foot(){return '<div class="foot">'+D.footer.map(l=>'<p dir="auto">'+esc(l)+'</p>').join('')+'</div>'}
+function bindCards(root){(root||main).querySelectorAll('[data-card]').forEach(b=>b.addEventListener('click',()=>go('card/'+b.dataset.card)))}
+function go(h){location.hash=h}
+function route(){const m=location.hash.match(/^#card\/(.+)$/);if(m&&D.cards[m[1]])show(m[1]);else home()}
+function setLang(l){lang=l;UI=tr(UI0);document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';
+  document.getElementById('b-en').classList.toggle('on',l==='en');document.getElementById('b-ar').classList.toggle('on',l==='ar');store.set('lang',l);route()}
+const main=document.getElementById('main');
+document.getElementById('b-en').onclick=()=>setLang('en');document.getElementById('b-ar').onclick=()=>setLang('ar');
+window.addEventListener('hashchange',route);
+setLang(store.get('lang')||'en');
+</script>
+</body>
+</html>
