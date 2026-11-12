@@ -7,10 +7,15 @@
 <style>
 @font-face{font-family:'Archivo Narrow';font-weight:400 700;font-display:swap;src:url(brand/fonts/ArchivoNarrow[wght].ttf) format('truetype')}
 @font-face{font-family:'Source Sans 3';font-weight:200 900;font-display:swap;src:url(brand/fonts/SourceSans3[wght].ttf) format('truetype')}
-:root{--navy:#402978;--ink:#2A1B52;--muted:#676767;--faint:#8A8A8A;--bg:#FFFFFF;--surface:#FFFFFF;--surface-2:#F7F6FA;--line:#DCDEE0;--line-2:#A6AAA9;--blue:#653BB8;--sky:#946FDD;--sky-tint:#F2EEFB;--orange:#653BB8;--orange-d:#402978;--orange-tint:#F2EEFB;--orange-soft:#D9CCF5;--hilite:#E6DDFA;--on-orange:#FFFFFF;--font:'Source Sans 3', 'Trebuchet MS', 'Segoe UI', system-ui, Arial, sans-serif;--font-display:'Archivo Narrow', 'Arial Narrow', Arial, sans-serif;--font-ar:'Noto Sans Arabic', 'Segoe UI', Tahoma, sans-serif;--red:#c4321a;--red-tint:#fdece8;--vest:#F2C200;--band-notes:#6A4BB0;--pad:16px}
+/* AFC SSP UI: Ubuntu (Ubuntu Font Licence 1.0, see UFL.txt) — Light 300, Regular 400, Medium 500; bold is drawn from Medium */
+@font-face{font-family:'Ubuntu';font-style:normal;font-weight:300;font-display:swap;src:url(brand/fonts/Ubuntu-Light.ttf) format('truetype')}
+@font-face{font-family:'Ubuntu';font-style:normal;font-weight:400;font-display:swap;src:url(brand/fonts/Ubuntu-Regular.ttf) format('truetype')}
+@font-face{font-family:'Ubuntu';font-style:normal;font-weight:500 700;font-display:swap;src:url(brand/fonts/Ubuntu-Medium.ttf) format('truetype')}
+
+:root{--band-notes:#6A4BB0;--navy:#0C272D;--ink:#0C272D;--muted:#676767;--faint:#8A8A8A;--bg:#FFFFFF;--surface:#FFFFFF;--surface-2:#F4F3F0;--line:#CBBB9D;--line-2:#A6AAA9;--blue:#653BB8;--sky:#26085C;--sky-tint:#D9FBE4;--orange:#0C272D;--orange-d:#061A1F;--orange-tint:#D9FBE4;--orange-soft:#CBBB9D;--hilite:#D9FBE4;--on-orange:#FFFFFF;--font:'Ubuntu', 'Segoe UI', Arial, sans-serif;--font-display:'Ubuntu', 'Segoe UI', Arial, sans-serif;--font-ar:'Noto Sans Arabic', 'Segoe UI', Tahoma, sans-serif;--bar-bg:#F1EAD8;--bar-fg:#0C272D;--bar-rule:0;--lang-on-bg:#0C272D;--lang-on-fg:#F1EAD8;--help-fg:#0C272D;--logo-h:44px;--band-report:#15532F;--band-find:#26085C;--band-notes:#736BED;--band-all:#0C272D;--page-bg:#E6DFCB;--red:#c4321a;--red-tint:#fdece8;--vest:#F2C200;--pad:16px}
 *{box-sizing:border-box}
 html,body{margin:0}
-body{background:#E9E6F1;color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.45}
+body{background:var(--page-bg,#E9E6F1);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.45}
 [lang=ar] body,[lang=ar] input{font-family:var(--font-ar),var(--font)}
 .app{max-width:760px;margin:0 auto;background:var(--surface-2);min-height:100vh;padding-bottom:28px}
 button{font:inherit;color:inherit}
@@ -29,6 +34,7 @@ button{font:inherit;color:inherit}
 .bar911[hidden]{display:none}
 .bar911 svg{width:22px;height:22px;stroke:#fff;flex:none}
 .bar911 b{font-size:22px}
+.bar.hot .logo{filter:brightness(0) invert(1)}
 @media(max-width:420px){.bar.hot .logo{display:none}.bar911{font-size:16px}}
 .wrap{padding:0 12px}
 h1,h2,h3,.ctitle{font-family:var(--font-display);color:var(--navy);margin:0}
@@ -49,11 +55,11 @@ h1{font-size:30px;line-height:1.1}
 .band svg{width:24px;height:24px;stroke:#fff;flex:none}
 .band small{display:block;font-family:var(--font);font-size:13px;font-weight:400;opacity:.92}
 .pbody{padding:12px 14px 14px}
-.b-report{background:var(--navy)}.c-report{background:var(--navy)}
-.b-find{background:var(--orange)}.c-find{background:var(--orange)}
+.b-report,.c-report{background:var(--band-report,var(--navy))}
+.b-find,.c-find{background:var(--band-find,var(--orange))}
 .b-em{background:var(--red)}.c-em{background:var(--red)}
 .b-notes{background:var(--band-notes)}
-.b-all{background:var(--ink)}.c-all{background:var(--ink)}
+.b-all,.c-all{background:var(--band-all,var(--ink))}
 /* ---- 911 ---- */
 .sos{margin:6px 0 0;border:4px solid var(--red);border-radius:6px;padding:14px 16px 12px;background:var(--surface)}
 .sos-k,.sos-n{text-align:center}
@@ -229,7 +235,7 @@ textarea.rv-in{resize:vertical;min-height:84px}
   <header class="bar"><div class="barrow">
     <div class="lang" role="group" aria-label="Language"><button id="b-en" class="on" lang="en">EN</button><button id="b-ar" lang="ar">عربي</button></div>
     <a class="bar911" id="bar911" href="tel:911" hidden></a>
-    <img class="logo" src="brand/jam-training-white.png" alt="JAM Training">
+    <img class="logo" src="brand/afc-logo-dark-green-800.png" alt="AFC Asian Cup Saudi Arabia 2027">
   </div></header>
   <main class="wrap" id="main"></main>
 </div>
