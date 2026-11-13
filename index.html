@@ -140,6 +140,7 @@ h1{font-size:30px;line-height:1.1}
 .glscroll{flex:1;overflow-y:auto;padding:0 14px 14px}
 @media (prefers-reduced-motion:reduce){.glpop,.glback{transition:none}}
 /* Common Arabic phrases (user, 2026-11-13): SMP 1.3's 12 approved phrases + its recordings */
+.em-after{margin-top:10px}
 .b-phr{background:var(--band-find,var(--orange))}
 .phrh{padding:0}
 .phrtog{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:10px;width:100%;padding:10px 14px;cursor:pointer;color:#fff}
@@ -408,6 +409,10 @@ function home(){
   h+='<section class="sos" id="sec-em" aria-label="Emergency 911"><p class="sos-k">'+esc(L('EMERGENCY'))+'</p><a class="sos-n" href="tel:'+S.number+'" aria-label="Call '+S.number+'">'+S.number+'</a>';
   h+='<p class="sos-lead">'+esc(S.lead)+'</p><ul class="sos-when">'+S.when.map(w=>'<li>'+esc(w)+'</li>').join('')+'</ul>';
   h+='<p class="sos-then">'+esc(S.then)+'</p><a class="sos-call" href="tel:'+S.number+'">'+svg('phone')+esc(L('Call 911'))+'</a><p class="sos-other">'+esc(S.other)+'</p></section>';
+  /* 1b — emergency cards, straight under 911 so all emergency information is together (user, 2026-11-13) */
+  h+='<section class="panel em-after">'+band('b-em','alert',UI.em,UI.emSub)+'<div class="pbody"><div class="emgrid">';
+  D.emergency.forEach(e=>{h+='<button class="em" data-card="'+e.card+'">'+svg(e.icon)+'<b>'+esc(lang==='ar'&&card(e.card).title.ar?card(e.card).title.ar:L(e.label))+'</b><span>'+esc(firstLine(e.card))+'</span></button>'});
+  h+='</div></div></section>';
   /* 2 — how to report */
   const M=C.marshal,shape=(c)=>'<svg class="cshape" viewBox="0 0 20 20" aria-hidden="true"><path fill="'+c.color+'" d="'+({triangle:'M10 2 19 18H1z',diamond:'M10 1 19 10 10 19 1 10z',circle:'M10 2a8 8 0 1 0 0 16 8 8 0 1 0 0-16z'}[c.shape])+'"/></svg>';
   h+='<section class="panel" id="sec-report">'+band('b-report','talk',UI.report,UI.reportSub)+'<div class="pbody">';
@@ -421,10 +426,6 @@ function home(){
   h+='<section class="panel" id="sec-find">'+band('b-find','search',UI.find,UI.findSub)+'<div class="pbody"><p class="help">'+UI.findHelp+'</p>';
   h+='<div class="search">'+svg('search')+'<input id="q" type="search" placeholder="'+UI.search+'" aria-label="'+UI.find+'"></div><p class="tryl">'+UI.tryLabel+'</p><div class="tries">'+UI0.tries.map(w=>'<button class="try" data-q="'+esc(w)+'">'+svg('search')+esc(L(w))+'</button>').join('')+'</div><div id="res" class="hidden"></div></div></section>';
   h+='<div id="homebody">';
-  /* 4 — emergency cards */
-  h+='<section class="panel">'+band('b-em','alert',UI.em,UI.emSub)+'<div class="pbody"><div class="emgrid">';
-  D.emergency.forEach(e=>{h+='<button class="em" data-card="'+e.card+'">'+svg(e.icon)+'<b>'+esc(lang==='ar'&&card(e.card).title.ar?card(e.card).title.ar:L(e.label))+'</b><span>'+esc(firstLine(e.card))+'</span></button>'});
-  h+='</div></div></section>';
   /* 5b — common Arabic phrases (SMP 1.3, approved release): every Arabic line and label from that release */
   if(D.phrases){const P=D.phrases,ar=lang==='ar';
     /* accordion (user comment, 2026-11-13): closed at first; tap the heading to open, tap again to close */
